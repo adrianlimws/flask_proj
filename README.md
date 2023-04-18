@@ -1,6 +1,8 @@
-### [Choose project folder an activate virtualenv before running web app]
+### [Choose project folder]
 
 cd flaskone
+
+### [Activate virtualenv]
 
 source venv/Scripts/activate
 
