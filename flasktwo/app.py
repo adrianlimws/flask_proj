@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 
 def cal_demerit_points(speed, speed_limit, is_holiday):
+    """ calculate demerit points """
     if speed <= speed_limit:
         return 0
     else:
@@ -16,6 +17,7 @@ def cal_demerit_points(speed, speed_limit, is_holiday):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """ check form data is not empty, else return error msg in index.html """
     if request.method == 'POST':
         if 'reset' in request.form:
             return render_template('index.html')
