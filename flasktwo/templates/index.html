@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Demerit Points Calculator</title>
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="./static/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Demerit Points Calculator</h1>
+
+        <form class="row g-2" method="post">
+            <div class="col-3">
+                <label for="formGroupExampleInput" class="form-label">Driving speed</label>
+                <input type="text" class="form-control" id="speed" name="speed">
+            </div>
+            <div class="col-3">
+                <label for="formGroupExampleInput" class="form-label">Speed limit</label>
+                <input type="text" class="form-control" id="speed_limit" name="speed_limit">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">Holiday period</label>
+                <input class="form-check-input" type="checkbox" id="holiday" name="holiday" value="y" id="flexCheckDefault">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-primary mb-3" value="Calculate points">Calculate points</button>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-danger mb-3" name="reset" value="Reset">Reset</button>
+            </div>
+        </form>
+
+
+        {% if points is not none %}
+        {% if points == 0 %}
+                <p>You were driving within the speed limit.</p>
+            {% else %}
+                <p>You have received {{ points }} demerit points.</p>
+        {% endif %}
+        {% endif %}
+</div>
+</body>
+<script src="./static/bootstrap.min.js"></script>
+</html>
