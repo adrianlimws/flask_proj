@@ -27,7 +27,7 @@ def index():
                 speed = float(speed_input)
                 speed_limit = float(speed_limit_input)
             except ValueError:
-                error_message = "Please enter valid speed number."
+                error_message = 'Please enter valid speed number.'
                 return render_template('index.html', error_message=error_message)
             else:
                 points = cal_demerit_points(speed, speed_limit, is_holiday)
