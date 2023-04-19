@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-def calculate_points(speed, speed_limit, is_holiday):
+def cal_demerit_points(speed, speed_limit, is_holiday):
     if speed <= speed_limit:
         return 0
     else:
@@ -20,11 +20,18 @@ def index():
         if 'reset' in request.form:
             return render_template('index.html')
         else:
-            speed = float(request.form['speed'])
-            speed_limit = float(request.form['speed_limit'])
+            speed_input = request.form['speed']
+            speed_limit_input = request.form['speed_limit']
             is_holiday = request.form.get('holiday') == 'y'
-            points = calculate_points(speed, speed_limit, is_holiday)
-            return render_template('index.html', points=points)
+            try:
+                speed = float(speed_input)
+                speed_limit = float(speed_limit_input)
+            except ValueError:
+                error_message = "Please enter valid speed number."
+                return render_template('index.html', error_message=error_message)
+            else:
+                points = cal_demerit_points(speed, speed_limit, is_holiday)
+                return render_template('index.html', points=points)
     else:
         return render_template('index.html')
 
