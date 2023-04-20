@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    {% block body %} {% endblock %}
+    <div class="container text-center">
+        {% block body %} {% endblock %}
+    </div>
 </body>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
