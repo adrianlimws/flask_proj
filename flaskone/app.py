@@ -19,20 +19,24 @@ class Todo(db.Model):
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
+    error = None
     if request.method == 'POST':
         task_content = request.form['content']
-        new_task = Todo(content=task_content)
 
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue adding task'
+        if not task_content:
+            error = 'Task field cannot be empty.'
+        else:
+            new_task = Todo(content=task_content)
 
-    else:
-        task = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks=task)
+            try:
+                db.session.add(new_task)
+                db.session.commit()
+                return redirect('/')
+            except:
+                return 'There was an issue adding task'
+
+    task = Todo.query.order_by(Todo.date_created).all()
+    return render_template('index.html', tasks=task, error=error)
 
 
 @app.route("/delete/<int:id>")

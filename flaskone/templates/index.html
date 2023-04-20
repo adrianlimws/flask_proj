@@ -12,6 +12,9 @@
 
     {% if tasks|length < 1 %}
         <h4>There are not task. Create one below!</h4>
+        {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
     {% else %}
         <table class="table">
             <thead>
@@ -44,5 +47,6 @@
         <input type="text" name="content" id="content">
         <input type="submit" value="Add Task">
     </form>
+
 </div>
 {% endblock %}
