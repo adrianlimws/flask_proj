@@ -44,14 +44,16 @@
             </div>
         </form>
 
-
+        <div class="row">
         {% if points is not none %}
             {% if points == 0 %}
-                <p>You were driving within the speed limit.</p>
+                <p class="lead text-success">You were driving within the speed limit.</p>
             {% else %}
-                <p>You have received {{ points }} demerit points.</p>
+                <p class="lead text-danger">You have received {{ points }} demerit points.</p>
             {% endif %}
         {% endif %}
+        </div>
+
     
 </div>
 </body>

@@ -28,7 +28,7 @@ def index():
             try:
                 speed = float(speed_input)
                 speed_limit = float(speed_limit_input)
-            except ValueError:
+            except:
                 error_message = 'Please enter valid speed number.'
                 return render_template('index.html', error_message=error_message)
             else:
